@@ -302,7 +302,7 @@ bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV
 
 /*
 int main(void) {
-  CService ip("factor.io", 1993, true);
+  CService ip("factormx.net", 1993, true);
   vector<CAddress> vAddr;
   vAddr.clear();
   int ban = 0;
