@@ -427,8 +427,8 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"factormx.net", "main.factormx.net", "seed.factor.org", ""};
-static const string testnet_seeds[] = {"factormx.net", "main.factormx.net", "seed.factor.org", ""};
+static const string mainnet_seeds[] = {"factormx.net", "seedfactor.co.kr", "seedfactor.kr", ""};
+static const string testnet_seeds[] = {"factormx.net", "seedfactor.co.kr", "seedfactor.kr", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
