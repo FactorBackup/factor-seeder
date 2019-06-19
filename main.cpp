@@ -38,7 +38,7 @@ public:
   CDnsSeedOpts() : nThreads(96), nDnsThreads(4), nPort(53), mbox(NULL), ns(NULL), host(NULL), tor(NULL), fUseSimpleLog(false), fUseTestNet(false), fWipeBan(false), fWipeIgnore(false), ipv4_proxy(NULL), ipv6_proxy(NULL) {}
 
   void ParseCommandLine(int argc, char **argv) {
-    static const char *help = "Dash-seeder\n"
+    static const char *help = "Factor-seeder\n"
                               "Usage: %s -h <host> -n <ns> [-m <mbox>] [-t <threads>] [-p <port>]\n"
                               "\n"
                               "Options:\n"
@@ -427,17 +427,17 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"dnsseed.dash.org", "dnsseed.dashdot.io", "dnsseed.masternode.io", ""};
-static const string testnet_seeds[] = {"testnet-seed.dash.org", "testnet-seed.dashdot.io", "test.dnsseed.masternode.io", ""};
+static const string mainnet_seeds[] = {"factor.io", "main.factor.io", "seed.factor.org", ""};
+static const string testnet_seeds[] = {"factor.io", "main.factor.io", "seed.factor.org", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   // When all seeders are down we need some reliable nodes to get initial addresses from.
   // Uncomment corresponding line and replace "some...ip" string with an IP of a good peer.
   if (fTestNet) {
-    // db.Add(CService("sometestnnetnodeip", 19999), true);
+    // db.Add(CService("sometestnnetnodeip", 11993), true);
   } else {
-    // db.Add(CService("somemainnnetnodeip", 9999), true);
+    // db.Add(CService("somemainnnetnodeip", 1993), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
@@ -490,10 +490,10 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0xce;
-      pchMessageStart[1] = 0xe2;
-      pchMessageStart[2] = 0xca;
-      pchMessageStart[3] = 0xff;
+      pchMessageStart[0] = 0xb2;
+      pchMessageStart[1] = 0xed;
+      pchMessageStart[2] = 0xd4;
+      pchMessageStart[3] = 0xbd;
       seeds = testnet_seeds;
       fTestNet = true;
   }
